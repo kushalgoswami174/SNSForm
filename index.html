@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>form</title>
+        <link rel="stylesheet" href="form.css">
+        <meta name="viewport" content="width=divice-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container">
+            <div class="title">Registration</div>
+            <form autocomplete="off"  method="post" name="google-sheet">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span>Student Name</span>
+                        <input type="text" placeholder="Enter Your Child Name" required name="Student">
+                    </div>
+                    <div class="input-box">
+                        <span>Father Name</span>
+                        <input type="text" placeholder="Enter Child Father Name" required  name="Father">
+                    </div>
+                    <div class="input-box">
+                        <span>Mother Name</span>
+                        <input type="text" placeholder="Enter Child Mother Name" required  name="Mother"> 
+                    </div>
+                    <div class="input-box">
+                        <span>Class</span>
+                        <input type="number" placeholder="Enter Child class" required  name="Class">
+                    </div>
+                    <div class="input-box">
+                        <span>Section</span>
+                        <input type="text" placeholder="Enter Child Class Section" required  name="Section">
+                    </div>
+                    <div class="input-box">
+                        <span>Mobile number</span>
+                        <input type="number" placeholder="Enter Your Mobile Number" required  name="Mobile">
+                    </div>
+                    <div class="input-box">
+                        <span>Email</span>
+                        <input type="email" placeholder="Enter Your Email id" required  name="Email">
+                    </div>
+                    <div class="input-box">
+                        <span>Address</span>
+                        <input type="text" placeholder="Enter Your Address" required  name="Address">
+                    </div>
+                    
+                </div>
+                <div class="button">
+                    <input type="submit" name="submit">
+                    <input type="reset" name="reset">
+                </div>
+            </form>
+        </div>
+    </body>
+
+    <!-- JAVA script -->
+
+    <script>
+       const scriptURL = 'https://script.google.com/macros/s/AKfycbx3sZF4LDshnbm-5FRTFmOo7P41xmRM-KyYNJbtU4CxMH8tpJF0VZqkxK_2AMhPWkNl/exec'
+            const form = document.forms['google-sheet']
+         
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+                .catch(error => console.error('Error!', error.message))
+            })
+    </script>
+</html>
